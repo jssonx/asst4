@@ -34,7 +34,7 @@ void top_down_step(
     #pragma omp parallel
     {
         int local_count = 0;
-        int* local_frontier = (int*)malloc(sizeof(int) * (g->num_nodes/omp_get_num_threads()));
+        int* local_frontier = (int*)malloc(sizeof(int) * (g->num_nodes));
 
         #pragma omp for schedule(dynamic, 200)
         for (int i=0; i<frontier->count; i++) {
@@ -113,6 +113,7 @@ bool bottom_up_step(
     int iteration)
 {
     bool stop = true;
+    #pragma omp parallel for schedule(dynamic, 200)
     for (int i = 0; i < g->num_nodes; i++) {
         if (distances[i] != NOT_VISITED_MARKER) continue;
         int start_edge = g->incoming_starts[i];
