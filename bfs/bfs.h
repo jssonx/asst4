@@ -23,5 +23,7 @@ struct vertex_set {
 void bfs_top_down(Graph graph, solution* sol);
 void bfs_bottom_up(Graph graph, solution* sol);
 void bfs_hybrid(Graph graph, solution* sol);
+void bfs_top_down_sequential(Graph graph, solution* sol);
+void bfs_bottom_up_sequential(Graph graph, solution* sol);
 
 #endif
